@@ -1,0 +1,84 @@
+              ┌──────────────────────────────┐
+              │            USER              │
+              │       Text / Voice Input     │
+              └──────────────┬───────────────┘
+                             │
+                             ▼
+              ┌──────────────────────────────┐
+              │        FRONTEND (WEB)        │
+              │                              │
+              │       HTML + CSS + JS        │
+              │                              │
+              │  Chat UI | Mic | Responses   │
+              └──────────────┬───────────────┘
+                             │
+                    HTTP Requests / API
+                             │
+                             ▼
+              ┌──────────────────────────────┐
+              │        FASTAPI BACKEND        │
+              │          app/main.py          │
+              │                              │
+              │  /assistant  /intent         │
+              │  /voice/start /voice/stop    │
+              │  /voice/status               │
+              └──────────────┬───────────────┘
+                             │
+                             ▼
+              ┌──────────────────────────────┐
+              │      ASSISTANT ENGINE        │
+              │       assistant.py           │
+              │                              │
+              │  Command Processing          │
+              │  Intent Detection            │
+              │  Response Generation         │
+              └──────────────┬───────────────┘
+                             │
+                ┌────────────┴────────────┐
+                ▼                         ▼
+    ┌──────────────────────┐  ┌──────────────────────┐
+    │    INTENT MODULE     │  │      LLM MODULE      │
+    │     intent.py        │  │       llm.py         │
+    │                      │  │                      │
+    │ Command Recognition  │  │ AI Response          │
+    └──────────┬───────────┘  └──────────┬───────────┘
+               │                         │
+               └────────────┬────────────┘
+                            │
+                            ▼
+              ┌──────────────────────────────┐
+              │         TOOL MANAGER         │
+              │       tool_manager.py        │
+              └──────────────┬───────────────┘
+                             │
+              ┌──────────────┼──────────────┐
+              ▼              ▼              ▼
+       ┌────────────┐ ┌────────────┐ ┌────────────┐
+       │ Application│ │  Browser   │ │ Calculator │
+       │   Tool     │ │    Tool    │ │    Tool    │
+       └────────────┘ └────────────┘ └────────────┘
+
+                            │
+                            ▼
+              ┌──────────────────────────────┐
+              │       RESPONSE SYSTEM        │
+              │                              │
+              │  Text Response → Web Chat    │
+              │  Voice Input  → Voice Module │
+              │  Speech Output → TTS Module  │
+              └──────────────────────────────┘
+
+| Component         | File                  | Responsibility                                |
+| ----------------- | --------------------- | --------------------------------------------- |
+| Frontend          | `web/index.html`      | Web interface                                 |
+| Styling           | `web/css/style.css`   | UI design                                     |
+| Frontend Logic    | `web/js/app.js`       | Chat, microphone button aur API communication |
+| Backend           | `app/main.py`         | FastAPI routes aur voice worker management    |
+| Assistant Engine  | `app/assistant.py`    | Command processing                            |
+| Intent Detection  | `app/intent.py`       | User command ka intent identify karna         |
+| LLM Integration   | `app/llm.py`          | AI model integration                          |
+| Memory            | `app/memory.py`       | Conversation memory functionality             |
+| Voice Recognition | `app/voice.py`        | Speech ko command mein convert karna          |
+| Text-to-Speech    | `app/tts.py`          | Response ko speech mein convert karna         |
+| Tool Management   | `app/tool_manager.py` | Available tools ko coordinate karna           |
+| Security          | `app/security.py`     | Security-related helper functionality         |

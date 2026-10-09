@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Chat Assistant</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-top">
+
+                <div class="sidebar-brand">
+                    <div class="brand-logo">AI</div>
+
+                    <span>AI Chat Assistant</span>
+                </div>
+
+                <button
+                    class="new-chat-button"
+                    id="newChatButton"
+                >
+                    <span class="new-chat-icon">+</span>
+                    <span>New chat</span>
+                </button>
+
+            </div>
+
+
+            <!-- CHAT HISTORY -->
+
+            <div class="history-section">
+
+                <div class="history-title">
+                    Recent
+                </div>
+
+                <div
+                    class="chat-history"
+                    id="chatHistory"
+                >
+
+                    <!-- Chat items will be added by JavaScript -->
+
+                </div>
+
+            </div>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+                <button
+                    class="sidebar-item"
+                    id="settingsButton"
+                >
+                    <span class="sidebar-item-icon">⚙</span>
+                    <span>Settings</span>
+                </button>
+
+
+                <button
+                    class="profile-button"
+                    id="profileButton"
+                >
+
+                    <div class="profile-avatar">
+                        N
+                    </div>
+
+                    <div class="profile-info">
+
+                        <strong>
+                            Guest User
+                        </strong>
+
+                        <span>
+                            Free account
+                        </span>
+
+                    </div>
+
+                    <span class="profile-more">
+                        ⋯
+                    </span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN AREA ================= -->
+
+        <main class="main-area">
+
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+
+                    <div class="topbar-logo">
+                        AI
+                    </div>
+
+                    <span>
+                        AI Chat Assistant
+                    </span>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <button
+                        class="topbar-button"
+                        id="clearButton"
+                        title="Clear conversation"
+                    >
+                        Clear
+                    </button>
+
+                    <button
+                        class="signin-button"
+                        id="signInButton"
+                    >
+                        Sign in
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- ================= CHAT AREA ================= -->
+
+            <section
+                class="chat-area"
+                id="chatArea"
+            >
+
+                <!-- WELCOME -->
+
+                <div
+                    class="welcome-screen"
+                    id="welcomeScreen"
+                >
+
+                    <div class="welcome-logo">
+                        AI
+                    </div>
+
+                    <h1>
+                        How can I help you?
+                    </h1>
+
+                    <p>
+                        Ask anything, solve problems, explore ideas,
+                        or work on your next project.
+                    </p>
+
+
+                    <!-- SUGGESTIONS -->
+
+                    <div class="suggestions">
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="Help me plan and structure a software project."
+                        >
+
+                            <span class="suggestion-icon">
+                                ✦
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Build something
+                                </strong>
+
+                                <p>
+                                    Plan and structure a project.
+                                </p>
+                            </div>
+
+                        </button>
+
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="Help me solve a programming problem."
+                        >
+
+                            <span class="suggestion-icon">
+                                </span>
+
+                            <div>
+                                <strong>
+                                    Solve a problem
+                                </strong>
+
+                                <p>
+                                    Get help with code and concepts.
+                                </p>
+                            </div>
+
+                        </button>
+
+
+                        <button
+                            class="suggestion-card"
+                            data-prompt="Give me some useful cybersecurity project ideas."
+                        >
+
+                            <span class="suggestion-icon">
+                                ◇
+                            </span>
+
+                            <div>
+                                <strong>
+                                    Explore ideas
+                                </strong>
+
+                                <p>
+                                    Discover useful possibilities.
+                                </p>
+                            </div>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGES -->
+
+                <div
+                    class="messages"
+                    id="chat"
+                >
+                </div>
+
+
+                <!-- THINKING -->
+
+                <div
+                    class="thinking"
+                    id="thinking"
+                >
+
+                    <div class="thinking-avatar">
+                        AI
+                    </div>
+
+                    <div class="thinking-content">
+
+                        <span>
+                            Thinking
+                        </span>
+
+                        <div class="thinking-dots">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= COMPOSER ================= -->
+
+            <div class="composer-container">
+
+                <div class="composer">
+
+                    <button
+                        class="composer-button"
+                        id="attachmentButton"
+                        title="Attach"
+                    >
+                        +
+                    </button>
+
+
+                    <textarea
+                        id="messageInput"
+                        rows="1"
+                        placeholder="Message AI Chat Assistant..."
+                    ></textarea>
+
+
+                    <button
+                        class="composer-button mic-button"
+                        id="micButton"
+                        title="Voice input"
+                        aria-label="Voice input"
+                    >
+                        🎙
+                    </button>
+
+
+                    <button
+                        class="send-button"
+                        id="sendButton"
+                        title="Send message"
+                        aria-label="Send message"
+                    >
+                        ↑
+                    </button>
+
+                </div>
+
+
+                <div class="composer-footer">
+
+                    <span>
+                        <span class="secure-dot"></span>
+                        Secure session
+                    </span>
+
+                    <span>
+                        Enter to send · Shift + Enter for new line
+                    </span>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= AUTH MODAL ================= -->
+
+    <div
+        class="modal-overlay"
+        id="authModal"
+    >
+
+        <div class="auth-modal">
+
+            <button
+                class="modal-close"
+                id="closeAuthModal"
+            >
+                ×
+            </button>
+
+
+            <div class="auth-logo">
+                AI
+            </div>
+
+
+            <h2>
+                Sign in to AI Chat Assistant
+            </h2>
+
+            <p class="auth-subtitle">
+                Save your conversations and access them anywhere.
+            </p>
+
+
+            <!-- GOOGLE -->
+
+            <button
+                class="oauth-button"
+                id="googleLogin"
+            >
+
+                <span class="oauth-icon">
+                    G
+                </span>
+
+                Continue with Google
+
+            </button>
+
+
+            <!-- GITHUB -->
+
+            <button
+                class="oauth-button"
+                id="githubLogin"
+            >
+
+                <span class="oauth-icon">
+                    ◆
+                </span>
+
+                Continue with GitHub
+
+            </button>
+
+
+            <div class="auth-divider">
+
+                <span>or</span>
+
+            </div>
+
+
+            <input
+                type="email"
+                id="emailInput"
+                placeholder="Email address"
+            >
+
+
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Password"
+            >
+
+
+            <button
+                class="auth-submit"
+                id="authSubmit"
+            >
+                Continue
+            </button>
+
+
+            <p class="auth-note">
+                Authentication will be securely connected to the backend.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="/js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+AI-Secure-Virtual-Assistant/
+│
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── assistant.py
+│   ├── intent.py
+│   ├── llm.py
+│   ├── memory.py
+│   ├── voice.py
+│   ├── tts.py
+│   ├── security.py
+│   ├── tool_manager.py
+│   │
+│   └── tools/
+│       ├── __init__.py
+│       ├── applications.py
+│       ├── browser.py
+│       └── calculator.py
+│
+├── web/
+│   ├── index.html
+│   │
+│   ├── css/
+│   │   └── style.css
+│   │
+│   └── js/
+│       └── app.js
+│
+├── logs/
+│
+├── .venv-1/
+│
+├── .env
+│
+├── run_voice.py
+│
+├── README.md
+│
+└── requirements.txt
